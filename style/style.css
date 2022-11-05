@@ -4,11 +4,34 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --card-title-border-color: #746615;
+  --card-color-primary: #f7dd43;
+  --card-bg-color: #1d1c19;
+  --bg: url(/assets/bg-yellow.svg);
+}
+
+body.blue {
+  --card-title-border-color: #338AF3;
+  --card-color-primary: #338AF3;
+  --card-bg-color: #202024;
+  --bg: url(/assets/bg-blue.svg)
+}
+
+body.green {
+  --card--title-border-color: #047c3f;
+  --card-color-primary: #047c3f;
+  --card-bg-color: #1a1f1b;
+  --bg: url(/assets/bg-green.svg);
+}
+
 body {
   background-color: #121214;
-  background-image: url(/assets/bg.svg);
-  background-position-x: center;
-  background-position-y: -715px;
+  background-image: var(--bg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -26,14 +49,16 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .card {
    padding: 32px 23px;
    text-align: center;
-   background-color: #1D1C19;
+   margin-bottom: 20px;
+   background-color: var(--card-bg-color);
    border-radius: 6px;
-   border-bottom: 2px solid #f7dd43;
+   border-bottom: 2px solid var(--card-color-primary);
    width: 270px;
 }
 
@@ -43,9 +68,9 @@ header {
   gap: 16px;
   align-items: center;
   width: fit-content;
-  color: #F7DD43;
+  color: #f7dd43;
   padding: 8px 16px;
-  border: 1px solid #746615; 
+  border: 1px solid var(--card-title-border-color); 
   border-radius: 6px;
   margin-inline: auto;
   margin-bottom: 53px;
@@ -79,6 +104,38 @@ header {
   font-weight: 900;
   font-size: 30px;
   line-height: 125%;
+}
+/*animation*/
+.card ul li strong:hover, 
+.card ul li img:hover {
+  transform: scale(1.1);
+}
+
+.card ul li strong, 
+.card ul li img {
+  transition: transform 0.3s;
+}
+
+.card {
+  animation: apper 0.3s;
+}
+
+@keyframes apper {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@media(min-width: 700px) {
+  #cards {
+    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 
